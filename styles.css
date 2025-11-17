@@ -1,10 +1,12 @@
+/* set background for full page*/
 html{
-    background:#ff785a;
+    background:#5A9367;
 }
-
+/* Hover happens anywhere on page, the spider goes upward*/
 html:hover .spider {
     top: -120%;
 }
+/*The spiders hanging web line*/
 .spiderweb {
     background:black;
     width:2px;
@@ -12,7 +14,7 @@ html:hover .spider {
     margin-left: 49px;
     transition: 1s ease-in-out;
 }
-
+/* spiders container: controls position and swinging animation*/
 .spider {
     position: absolute;
     display: inline-block;
@@ -21,7 +23,7 @@ html:hover .spider {
     animation: swing 2s infinite;
     transform-origin: top;
 }
-
+/* Spiders body*/
 .spider .body{
     width:100px;
     height: 80px;
@@ -29,7 +31,7 @@ html:hover .spider {
     position: relative;
     border-radius:50%;
 }
-
+/*Spiders eyes*/
 .spider .body .eye {
     width:33px;
     height: 33px;
@@ -38,7 +40,7 @@ html:hover .spider {
     bottom:20px;
     border-radius: 50%;
 }
-
+/* right and left eye positions*/
 .spider .eye.right {
     right: 15px;
 }
@@ -46,7 +48,7 @@ html:hover .spider {
 .spider .eye.left{ 
     left: 15px;
 }
-
+/*eye pupils (moving and blinking*/
 .spider .eye::after{
     background: #000;
     width: 7px;
@@ -55,16 +57,19 @@ html:hover .spider {
     display: block;
     margin: 55%;
     border-radius: 50%;
-    animation: look 8s infinite;
+    animation: look 8s infinite,blink 4s infinite;
 }
-
-
+/*makes all legs wiggle */
+.legs .leg {
+    animation: wiggle 2s infinite ease-in-out;
+}
+/* legs container holding 3 legs each*/
 .spider .legs{
     position: absolute;
     bottom: -10%;
-    z-index:-1;
+    z-index:-1; /* puts legs below the body*/
 }
-
+/* shape of the legs*/
 .spider .legs .leg{
     width:80px;
     height: 40px;
@@ -73,7 +78,7 @@ html:hover .spider {
     border-top-color: #000;
     border-radius: 40px 40px 0 0;
 }
-
+/* position legs group*/
 .spider .legs.left{
     left:-70%;
 }
@@ -81,7 +86,7 @@ html:hover .spider {
 .spider .legs.right{
     right:-60%;
 }
-
+/*Left legs angle and spacing for each of them*/
 .legs.left .leg:nth-child(1){
     transform:rotate(10deg);
     margin-left:10px;
@@ -110,7 +115,7 @@ html:hover .spider {
     transform:rotate(50deg);
     margin-left:-30px;
 }
-
+/*eye looking animation */
 @keyframes look{
     0%,40%,100%{
         transform:translateX(0);
@@ -119,7 +124,7 @@ html:hover .spider {
         transform:translateX(-110%);
     }
 }
-
+/* spider swinging animation*/ 
 @keyframes swing{
     0%,100%{
         transform:translateY(0);
@@ -127,4 +132,18 @@ html:hover .spider {
     50%{
         transform:translateY(-20px);
     }
+}
+/* eye blinking animation*/
+@keyframes blink {
+    0%, 2%, 60%, 62%, 100% {
+        transform: scaleY(1);
+    }
+    1%, 61% {
+        transform: scaleY(0.1);
+    }
+}
+/*legs wiggle animation */
+@keyframes wiggle {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(8deg); }
 }
